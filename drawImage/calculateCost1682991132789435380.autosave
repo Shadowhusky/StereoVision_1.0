@@ -1,0 +1,50 @@
+public class calculateCost
+{
+  float[][] intensity;
+  public calculateCost(float[][] intensity)
+  {
+    initialize();
+    this.intensity=intensity;
+  }
+  
+  
+  int line=0;
+  
+  void initialize()
+  {
+    line=10;
+    int imageWidth=intensity[0].length-1;
+    for(int i=0;i<imageWidth;i++)
+    {
+      Color co=new Color();
+      co=new Color(image1.get(line,i));
+      intensity[0][i]=color.getGray(color);
+      co=new Color(image2.get(line,i));
+      intensity[1][i]=color.getGray(color);
+      println(intensity[0][i]);
+    } 
+  }
+  
+  private final float Occlusion=3.8f;
+  void getCostArray(int N,int M) 
+  {
+    float[][] cost=new float[N+1][M+1];
+    cost[0][0]=Cost(0,0);
+    for(int i=1;i<=N;i++){cost[i][0]=i*Occlusion;}
+    for(int i=1;i<=M;i++){cost[0][i]=i*Occlusion;}
+    for(int i=1;i<=N;i++)
+    {
+     for(int j=1;j<=M;j++)
+       {
+         cost[i][j]=Math.min(Math.min(cost[i-1][j]+Occlusion,cost[i][j-1]+Occlusion) , cost[i-1][j-1]+Cost(i,j) ); 
+       }
+    }
+  }
+  
+  float Cost(int i,int j)
+  {
+    return (-0.03125f*(intensity[0][i]-intensity[1][i])*(intensity[0][i]-intensity[1][i]));
+  }
+  
+  
+}
