@@ -49,7 +49,7 @@ public class calculateCost
   float Cost(int i,int j)
   {
     int intensityDiff=Math.abs(intensity[0][i][line]-intensity[1][j][line]);
-    return (0.6f*intensityDiff);
+    return ((0.125f)*intensityDiff*intensityDiff);
   }
   
   int[] backPass()
@@ -58,14 +58,13 @@ public class calculateCost
     int copy_N=N;
     int copy_M=N;
     int index=0;
-    for(int i=0;i<N;i++)
+    for(int i=0;i<=N;i++)
     {
       switch (actions[copy_N][copy_M])
-      {
-        
+      {      
         case 1:
           disparity[index]=Math.abs(copy_M-copy_N);
-          copy_M-- ;
+          copy_M--;
           copy_N--;
           index++;
           break;

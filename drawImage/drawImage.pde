@@ -10,9 +10,11 @@ void setup()
 {
   size(1200,800);
   background(0);
-;
-  image1=loadImage("view1.png");
-  image2=loadImage("view2.png");
+  
+  //image1=loadImage("Pair_3/view1.png");
+  //image2=loadImage("Pair_3/view2.png");
+  image1=loadImage("randomDot/RandomDot_Left.gif");
+  image2=loadImage("randomDot/RandomDot_Right.gif");
   imageWidth=image1.width;
   imageHeight=image1.height;
   iniImage();
